@@ -1,0 +1,20 @@
+@startuml jalannya
+left to right direction
+
+actor Admin as A
+actor Supir as S
+
+usecase "Login ke Sistem" as UC1
+usecase "Melihat Data Supir" as UC2
+usecase "Menambah Data Supir" as UC3
+usecase "Menghapus Data Supir" as UC4
+
+A --> UC1
+A --> UC2
+A --> UC3
+A --> UC4
+
+S --> UC1
+S --> UC2
+
+@enduml

@@ -1,0 +1,8 @@
+pert2/sampleapp/db/*
+pert3/sampleapp/db/*
+UTS/sampleapp/db/*
+UAS/sampleapp/db/*
+pert10/sampleapp/db/*
+pert10/sampleapp/db/data/ibdata1
+pert10/sampleapp/db/data/ib_logfile0
+pert10/sampleapp/db/data/ib_logfile1

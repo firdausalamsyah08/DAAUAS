@@ -1,0 +1,34 @@
+@startuml alur
+start
+
+:User membuka aplikasi;
+
+if (Apakah User Sudah Login?) then (Ya)
+    if (Peran User?) then (Admin)
+        :Tampilkan Dashboard Admin;
+        if (Aksi?) then
+            :Tambah Data Supir;
+            :Isi Form Data Supir;
+            :Simpan Data ke Database;
+        else
+            if (Hapus Data Supir) then (Ya)
+                :Pilih Data yang Akan Dihapus;
+                :Hapus Data dari Database;
+            endif
+        endif
+        :Tampilkan Semua Data Supir;
+    else (Supir)
+        :Tampilkan Data Supir (Read-Only);
+    endif
+else (Tidak)
+    :Tampilkan Halaman Login;
+    :User Masukkan Email dan Password;
+    if (Apakah Login Berhasil?) then (Ya)
+        :Arahkan ke Dashboard Sesuai Peran;
+    else (Tidak)
+        :Tampilkan Pesan Error;
+    endif
+endif
+
+stop
+@enduml
