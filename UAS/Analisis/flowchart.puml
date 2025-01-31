@@ -1,0 +1,37 @@
+@startuml alur 
+
+start
+:User membuka aplikasi;
+:User mengakses halaman login;
+if (User memasukkan kredensial?) then (Ya)
+    :Sistem memvalidasi kredensial;
+    if (Kredensial valid?) then (Ya)
+        :Sistem mengizinkan akses;
+        :User diarahkan ke Dashboard;
+        if (User menggunakan aplikasi?) then (Ya)
+            :User mengakses fitur (Data Anak, Kesehatan, Aktivitas, Laporan);
+            if (User ingin logout?) then (Ya)
+                :User klik logout;
+                :Sistem mengakhiri sesi;
+                :User keluar dari aplikasi;
+                stop
+            endif
+        endif
+    else (Tidak)
+        :Sistem menampilkan pesan error "Username atau Password Salah";
+        :User diberikan opsi untuk mencoba lagi atau reset password;
+        if (User memilih reset password?) then (Ya)
+            :User memasukkan email untuk reset password;
+            :Sistem mengirimkan email reset password;
+            :User mengikuti instruksi di email;
+        else (Tidak)
+            :User mencoba login kembali;
+        endif
+    endif
+else (Tidak)
+    :User tetap di halaman login;
+endif
+
+stop
+
+@enduml

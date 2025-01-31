@@ -1,0 +1,63 @@
+@startuml data
+
+entity "User" as User {
+  + id : int <<PK>>
+  --
+  name : varchar
+  email : varchar
+  password : varchar
+}
+
+entity "Child" as Child {
+  + id : int <<PK>>
+  --
+  user_id : int <<FK>>
+  name : varchar
+  birth_date : date
+}
+
+entity "HealthRecords" as HealthRecords {
+  + id : int <<PK>>
+  --
+  child_id : int <<FK>>
+  weight : float
+  height : float
+  vaccination : varchar
+  health_notes : text
+  record_date : date
+}
+
+entity "DailyActivity" as DailyActivity {
+  + id : int <<PK>>
+  --
+  child_id : int <<FK>>
+  activity_type : varchar
+  duration : int
+  activity_date : date
+}
+
+entity "DevelopmentMilestones" as DevelopmentMilestones {
+  + id : int <<PK>>
+  --
+  child_id : int <<FK>>
+  milestone : varchar
+  achieved_date : date
+  notes : text
+}
+
+entity "Reports" as Reports {
+  + id : int <<PK>>
+  --
+  child_id : int <<FK>>
+  report_type : varchar
+  report_data : text
+  generated_date : date
+}
+
+User ||--|{ Child : memiliki
+Child ||--|{ HealthRecords : memiliki
+Child ||--|{ DailyActivity : memiliki
+Child ||--|{ DevelopmentMilestones : memiliki
+Child ||--|{ Reports : memiliki
+
+@enduml
